@@ -1,5 +1,6 @@
 const rollController = {};
 
+//controller will check if input is valid and will return an array with die rolls
 rollController.getRoll = (req, res, next) => {
   const numDie = isNaN(req.params.num)
     ? req.params.num
@@ -19,8 +20,7 @@ rollController.getRoll = (req, res, next) => {
     roll[i] = Math.ceil(Math.random() * 6);
   }
   res.locals.roll = roll;
-  console.log(roll);
-  return next(res.locals.roll);
+  return next();
 };
 
 module.exports = rollController;
