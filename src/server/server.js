@@ -4,9 +4,9 @@ const fsCallback = require('fs');
 const app = express();
 const path = require('path');
 const PORT = 3000;
-// const cors = require('cors');
+const cors = require('cors');
 
-// app.use(cors());
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
   return res
     .status(200)
     .sendFile(path.resolve(__dirname, '../client/index.html'));
+});
+
+app.get('/styles.css', (req, res) => {
+  return res
+    .status(200)
+    .sendFile(path.resolve(__dirname, '../client/styles.css'));
 });
 
 app.get('/api', (req, res) => {
